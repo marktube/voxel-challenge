@@ -29,6 +29,7 @@ def create_butterfly(pos, sz, axis, angle, color):
         sdf = pol_r - ( ti.exp(ti.sin(pol_theta))-2*ti.cos(4*pol_theta)+ti.pow(ti.sin(2*pol_theta-ti.math.pi)/24,5) )
         if sdf < 0:
             scene.set_voxel(pos + ti.math.rotate3d(vec3(I, pol_r),axis,angle), 2, color/pol_r)
+            scene.set_voxel(pos + ti.math.rotate3d(vec3(I, pol_r-1), axis, angle), 2, color / pol_r)
 
 @ti.func
 def create_moutain(pos, sz, height):
