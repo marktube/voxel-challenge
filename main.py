@@ -25,7 +25,7 @@ def create_butterfly(pos, sz, axis, angle, color):
         tmp[0] = tmp[0] / sz * xscale
         tmp[1] = tmp[1] / sz * yscale -0.5
         pol_r = tmp.norm()
-        pol_theta = ti.acos(tmp[0]/pol_r) + 4*ti.math.pi
+        pol_theta = ti.asin(tmp[1] / pol_r) + 4*ti.math.pi
         sdf = pol_r - ( ti.exp(ti.sin(pol_theta))-2*ti.cos(4*pol_theta)+ti.pow(ti.sin(2*pol_theta-ti.math.pi)/24,5) )
         if sdf < 0:
             scene.set_voxel(pos + ti.math.rotate3d(vec3(I, pol_r),axis,angle), 2, color/pol_r)
